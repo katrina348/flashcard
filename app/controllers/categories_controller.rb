@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
 
   before_action :set_category, only:[:show, :update, :destroy]
   ## ssr of react component
+
   def app
     render component: 'App'
   end
@@ -19,7 +20,7 @@ class CategoriesController < ApplicationController
     if(@category.save)
       render json: @category
     else
-      render json: @category.errors.full_message, status: :unprocessable_entity
+      render json: @category.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -27,7 +28,7 @@ class CategoriesController < ApplicationController
     if(@category.update(category_params))
       render json: @category
     else
-      render json: @category.errors.full_message, status: :unprocessable_entity
+      render json: @category.errors.full_messages, status: :unprocessable_entity
     end
   end
 
