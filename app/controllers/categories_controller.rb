@@ -1,10 +1,7 @@
 class CategoriesController < ApplicationController
-
   before_action :set_category, only:[:show, :update, :destroy]
-  ## ssr of react component
-
   def app
-    render component: 'App'
+   render component: 'App'
   end
 
   def index
@@ -12,7 +9,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    render json: {category: @category, cards:@category.cards}
+    render component: 'CategoryShowSSR', props: {id: @category.id}
   end
 
   def create
@@ -20,16 +17,16 @@ class CategoriesController < ApplicationController
     if(@category.save)
       render json: @category
     else
-      render json: @category.errors.full_messages, status: :unprocessable_entity
+      render json:  @category.errors.full_messages, status: :unprocessable_entity
     end
   end
 
   def update
-    if(@category.update(category_params))
-      render json: @category
-    else
-      render json: @category.errors.full_messages, status: :unprocessable_entity
-    end
+      if(@category.update(category_params))
+        render json: @category
+      else
+        render json: @category.errors.full_messages, status: :unprocessable_entity
+      end
   end
 
   def destroy
@@ -43,7 +40,6 @@ class CategoriesController < ApplicationController
   end
 
   def set_category
-    @category = Category.find(params[:id])
+      @category = Category.find(params[:id])
   end
 end
-

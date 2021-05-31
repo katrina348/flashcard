@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'categories#app'
+
 
   get '/categories', to:'categories#index'
   post '/categories', to:'categories#create'
-
+  
   get '/categories/:id', to:'categories#show'
   put '/categories/:id', to:'categories#update'
   patch '/categories/:id', to:'categories#update'
@@ -19,5 +19,5 @@ Rails.application.routes.draw do
   patch '/categories/:category_id/cards/:id', to: 'cards#update'
   delete '/categories/:category_id/cards/:id', to: 'cards#destroy'
 
-  get '/cards', to: 'cards#all'
+  get  '/cards', to:'cards#all'
 end
