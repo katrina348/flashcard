@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+js = Category.create(name:'JavaScript')
+science = Category.create(name: "Science")
+random = Category.create(name: 'Random')
+
+js.cards.create(question:'True or False: let is preferred over var', answer:'false', answered:false)
+js.cards.create(question:"1 == '1' ", answer:'false', answered:false)
+
+science.cards.create(question:'What is the maximum speed of the universe?', answer:'speed of light', answered:false)
+science.cards.create(question:'What is the abbreviation for water', answer:'H2O', answered:false)
+
+
